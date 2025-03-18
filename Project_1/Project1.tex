@@ -206,18 +206,110 @@ c = (V_{11}+V_{22})/2, \quad ω_z = (V_{11}-V_{22})/2, \quad ω_x = V_{12}=V_{21
 \). We have a set of given values for our parameters:
 \(E_1=0, E_2=4, V_{11}=V_{-22}=3, V_{12} = V_{21}=0.2\). \newline
 In this section we want to find the eigenvalues of the Hamiltonian when acted on the one-qubit basis, as a function of the parameter \(λ\). This was solved numerically. 
+I computed the eigenvalues of the Hamiltonian as a function of \(λ\), as shown in \ref{fig:Eigvals}. At \(λ\) the energy levels of \(\ket{0} \text{and} \ket{1}\) are separated by \(2Ω=4\). As \(λ\) increases, the interaction term \(H_I\) modifies the energy levels, causing them to converge. At \(λ=\frac{2}{3}\), the eigenvalues cross, which indicates degeneracy where the ground state and excited state have the same energy. When \(λ\) continues to increase, energy levels starts to separate again. \newline
+The crossing is a level crossing, which occurs when the energy levels of the two states become degenerate. The physical interpretation of this result is that the system undergoes a transition at \(λ=\frac{2}{3}\), where the ground state and excited states exchanges. \newline
 \begin{figure}
   \begin{center}
-        \includegraphics[scale=0.7]{Eigvals.png}
+        \includegraphics[scale=0.6]{Eigvals.png}
         \caption{The eigenvalues of the Hamiltonian as a function of the parameter \(λ\). ES represents the excited state, and GS represents the ground state.}
   \end{center}
-\end{figure}
+  \label{fig:Eigvals}
+\end{figure}\newpage
+\section{c)}
+In this section we want to attempt to implement the variational Quantum eigensolver (VQE) for the above Hamiltonian system.\newline
+To do this I begun by defining the state  \(\ket{0}=[1,0]\). I also defined two rotation matrices \(R_x(θ)\) and \(R_y(ϕ)\), which are given by
+\[
+\begin{aligned}
+R_x(θ) &= \cos(\frac{θ}{2})⋅ I - i \sin(\frac{θ}{2})⋅ σ_x\\
+R_y(ϕ) &= \cos(\frac{ϕ}{2})⋅ I - i \sin(\frac{ϕ}{2})⋅ σ_y
+\end{aligned}
+\]
+where \(θ\) and \(ϕ\) are the angles of rotation around the x and y axis, respectively, and \(I\) is the identity matrix. \newline
+The process of the VQE method is to first prepare the state \(\ket{0}\), then apply the rotation matrices \(R_x(θ)\) and \(R_y(ϕ)\) to the state, with some arbitrary angles \(θ\) and \(ϕ\). After this, we measure the expectation value of the Hamiltonian, which is given by
+\[
+\begin{aligned}
+\expval{H} &= \bra{\psi} H \ket{\psi} = \bra{\psi} H_0 \ket{\psi} + λ \bra{\psi} H_I \ket{\psi}
+\end{aligned}
+\]
+where \(\ket{\psi}\) is the state after applying the rotation matrices. To find the optimal parameters for the rotation matrices, I used a gradient descent method, which is a method that minimizes a function by iteratively moving in the direction of the negative gradient. The gradient is calculated by 
+\[
+\begin{aligned}
+        ∂ θ &= \pdv{\expval{H}}{θ},\\  ∂ ϕ &= \pdv{\expval{H}}{ϕ}
+\end{aligned}
+\]
+And the parameters are updated by
+\[
+\begin{aligned}
+        θ_{new} &= θ_{old} - \eta ∂ θ,\\ ϕ_{new} &= ϕ_{old} - \eta ∂ ϕ
+\end{aligned}
+\]
+where \(η\) is the learning rate. This method was performed a number of times for each \(λ\), to find the optimal parameters.\newline
+\begin{figure}
+        \begin{center}
+                \includegraphics[scale=0.6]{VQE.png}
+        \end{center}
+        \caption{The figure shows a plot of the expectation value of the Hamiltonian as a function of the parameter \(λ\). The plot shows that the VQE method aligned perfectly with the ground state energy of the Hamiltonian.}
+        \label{fig:VQE}
+\end{figure}\newpage
+In figure \ref{fig:VQE} I have plotted the expectation value of the Hamiltonian as a function of the parameter \(λ\). The plot shows that the VQE method aligned perfectly with the ground state energy of the Hamiltonian. Meaning that the VQE method was successful in finding the ground state energy of the Hamiltonian. The method of using gradient descent seemed to be a very effective and accurate method for the VQE of this simple system. \newline
 
+\section{d)}
+In this section we expand to a two-qubit system, where our many-bodu computational basis is given by \(\ket{00}, \ket{01}, \ket{10}, \ket{11}\), defined as:
+\[
+\begin{aligned}
+\ket{00} &= \ket{0}_A ⊗ \ket{0}_B = [1\quad 0\quad 0\quad 0]^T \\
+\ket{01} &= \ket{0}_A ⊗ \ket{1}_B = [0\quad 1\quad 0\quad 0]^T \\
+\ket{10} &= \ket{1}_A ⊗ \ket{0}_B = [0\quad 0\quad 1\quad 0]^T \\
+\ket{11} &= \ket{1}_A ⊗ \ket{1}_B = [0\quad 0\quad 0\quad 1]^T
+\end{aligned}
+\]
+These basis states also define the eigenstates of the non-interacting Hamiltonian:
+\[
+\begin{aligned}
+        H_0 \ket{00} &= ϵ_{00} \ket{00} \\
+        H_0 \ket{10} &= ϵ_{10} \ket{10} \\
+        H_0 \ket{01} &= ϵ_{01} \ket{01} \\
+        H_0 \ket{11} &= ϵ_{11} \ket{11}
+\end{aligned}
+\]
+And the interacting part of the Hamiltonian is given by
+\[
+H_I = H_x σ_x⊗ σ_x + H_z σ_z⊗ σ_z
+\]
+Thus our Hamiltonian matrix is given by
+\[
+\begin{pmatrix}
+  ϵ_{00} + λ H_z &0&0&λH_x\\
+  0&ϵ_{10} - λH_z & λH_x&0\\
+  0&λH_x&ϵ_{01} - λH_z&0\\
+  λH_x&0&0&ϵ_{11} + λ H_z
+\end{pmatrix}
+\]
+To find the energy eigenvalues we have a set of parameters \(H_x=2.0,H_z=3.0,ϵ_{00}=0.0,ϵ_{10}=2.5,ϵ_{01}=6.5,ϵ_{11}=7.0\). I found the eigenvalues to this Hamiltonian by diagonalizing the matrix.
+\begin{figure}
+        \begin{center}
+                \includegraphics[scale=0.6]{Eigvals2q.png}
+        \end{center}
 
-
-
-
-
+        \caption{The figure shows the eigenvalues of the Hamiltonian as a function of the parameter \(λ\).}
+        \label{fig:Eigvals2qubit}
+\end{figure}\newpage
+In figure \ref{fig:Eigvals2qubit} we see the energy eigenvalues of the Hamiltonian, as a function of the interaction parameter \(λ\). At \(λ=0.4\) we can, as in section b, see a level crossing where the ground state and excited state exchange. This shows how entanglement can be created in a system, by the Hamiltonian itself, due to the strength of the interaction. \newline
+The next step is to calculate the von Neumann entropy of the same system. This is done by first defining the density matrix of the lowest energy eigenstate. 
+\[
+ρ_0 = (α_{00} \ket{00} \bra{00} + α_{10} \ket{10} \bra{10} + α_{01} \ket{01} \bra{01} + α_{11} \ket{11} \bra{11})
+\]
+We can then denfine the density matrices for the subsets \(A\) and \(B\), which are given by
+\[
+\begin{aligned}
+ρ_A &= \text{Tr}_B(ρ_0) = \bra{0} ρ_0 \ket{0}_B +  \bra{1} ρ_0 \ket{1}_B\\
+ρ_B &= \text{Tr}_A(ρ_0) = \bra{0} ρ_0 \ket{0}_A +  \bra{1} ρ_0 \ket{1}_A
+\end{aligned}
+\]
+To find the von Neumann entropy, we will use the formula:
+\[
+S(A,B) = -\text{Tr}(ρ_{A,B}\log_2(ρ_{A,B}))
+\]
 
 \end{document}
 
