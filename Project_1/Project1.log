@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Arch Linux) (preloaded format=xelatex 2025.3.17)  18 MAR 2025 14:42
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Arch Linux) (preloaded format=xelatex 2025.3.17)  19 MAR 2025 11:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -642,8 +642,28 @@ File: Eigvals2q.png Graphic file (type bmp)
 [7]
 
 [8]
+File: VonNeumann.png Graphic file (type bmp)
+<VonNeumann.png>
 
-[9] (./Project1.aux)
+Underfull \hbox (badness 10000) in paragraph at lines 312--321
+
+ []
+
+
+
+[9]
+File: VQE_2qubit.png Graphic file (type bmp)
+<VQE_2qubit.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--338
+
+ []
+
+
+
+[10]
+
+[11] (./Project1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -652,16 +672,22 @@ L3 programming layer <2025-01-18>
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package rerunfilecheck Info: File `Project1.out' has not changed.
-(rerunfilecheck)             Checksum: B6A4F9C16C0695A9090E01FBA7C7EABE;224.
+
+Package rerunfilecheck Warning: File `Project1.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Project1.out':
+(rerunfilecheck)             Before: FD8F98801C6BC5D17F057EA6D5C82ADA;336
+(rerunfilecheck)             After:  9047D325AE048C57C6E17999F2C29F11;539.
  ) 
 Here is how much of TeX's memory you used:
- 18566 strings out of 475251
- 337563 string characters out of 5761397
+ 18586 strings out of 475251
+ 337938 string characters out of 5761397
  1027385 words of memory out of 5000000
- 41319 multiletter control sequences out of 15000+600000
+ 41337 multiletter control sequences out of 15000+600000
  565256 words of font info for 85 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 90i,13n,107p,594b,383s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,13n,107p,807b,383s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Project1.pdf (10 pages).
+Output written on Project1.pdf (12 pages).

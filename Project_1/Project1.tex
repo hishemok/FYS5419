@@ -310,7 +310,39 @@ To find the von Neumann entropy, we will use the formula:
 \[
 S(A,B) = -\text{Tr}(ρ_{A,B}\log_2(ρ_{A,B}))
 \]
+\begin{figure}
+        \begin{center}
+                \includegraphics[scale=0.6]{VonNeumann.png}
+        \end{center}
+        \caption{The figure shows the von Neumann entropy of the system as a function of the parameter \(λ\).}
+        \label{fig:VonNeumann}
+\end{figure}
+The results for this are shown in \ref{fig:VonNeumann}. The von Neumann entropy of the system is zero when the interaction parameter \(λ\) is zero, indicating no entanglement. As the interaction parameter increases, the von Neumann entropy increases, which is also what we would expect. The von Neumann entropy is a measure of the entanglement in the system, and the results show that the entanglement increases as the interaction parameter increases. At \(λ=0.4\) we can see a jump in the entropy, due to the sudden entanglement of the ground state and the first excited state. This can be compared with \(λ=0.4\) in \ref{fig:Eigvals2qubit}, where we can see the eigenvalues of the ground state and the first excited state cross. \newline
 
+
+\section{e)}
+In this section we will use the VQE method to approximate the ground state ennergy eigenvalues, for a range of \(λ\) values. This is done for the 2-qubit system, with the above hamiltonian and the same parameter values. This was done almost the same way as with the 1-qubit system, but with a few modifications. The state \(\ket{00}\) was defined as the initial state. The rotation matrices are the same ones I used in c), but I applied each of them twice, once for each qubit. The state was defined as
+\[
+\ket{\psi} = CNOT ⋅ ( R_x(θ_1) ⊗ R_x(θ_2)) ⋅  (R_y(ϕ_1) ⊗ R_y(ϕ_2) )\ket{00}
+\]
+\begin{figure}[h]
+        \begin{center}
+                \includegraphics[scale=0.6]{VQE_2qubit.png}
+        \end{center}
+
+        \caption{The figure shows the VQE approximation of the ground state energy of the 2-qubit system, plotted against the exact ground state energy, as functions of the parameter \(λ\).}
+        \label{fig:VQE2q}
+\end{figure}
+Figure \ref{fig:VQE2q} shows the VQE approximation of the ground state energy of the 2-qubit system, plotted against the exact ground state energy, as functions of the parameter \(λ\). This was again solved, using a gradient descent method to find the optimal parameters \(θ_1,θ_2,ϕ_1,ϕ_2\) The VQE method was successful in finding the ground state energy of the Hamiltonian, and the results are very close to the exact ground state energy. Even for a two qubit system, the VQE method seems to be a very effective and accurate method for finding the ground state energy of the Hamiltonian. \newline
+We can see slight inaccuries at \(λ=0.4\). This is where the ground state has a crack in energy and starts to decrease. It is expected that this point would be the most difficult to approximate. \newline
+
+\section{f)}
+In this section, I will ecplore the Lipkin Hamiltonian for the \(3\times 3\) matrix with total spin \(J=1\), and the \(5 \times 5\) matrix with total spin \(J=2\). 
+
+
+\section{g)}
+
+\section{\href{https://github.com/hishemok/FYS5419/tree/master/Project_1}{Find the codes here}}
 \end{document}
 
 
