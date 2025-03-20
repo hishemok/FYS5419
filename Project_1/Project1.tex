@@ -337,12 +337,107 @@ Figure \ref{fig:VQE2q} shows the VQE approximation of the ground state energy of
 We can see slight inaccuries at \(λ=0.4\). This is where the ground state has a crack in energy and starts to decrease. It is expected that this point would be the most difficult to approximate. \newline
 
 \section{f)}
-In this section, I will ecplore the Lipkin Hamiltonian for the \(3\times 3\) matrix with total spin \(J=1\), and the \(5 \times 5\) matrix with total spin \(J=2\). 
+In this section, I will ecplore the Lipkin Hamiltonian for the \(3\times 3\) matrix with total spin \(J=1\), and the \(5 \times 5\) matrix with total spin \(J=2\). \newline
+We start by defining the Hamiltonian in second quantization
+\[
+\begin{aligned}
+        H_0 &= \frac{1}{2} ϵ ∑_{p σ}^{} σ a_{pσ}^{†} a_{pσ} \\
+        H_1 &= -\frac{1}{2} V ∑_{pp'σ}^{} a_{σp+}^{†} a_{σp'}^{†} a_{σp'} a_{σp}\\
+        H_2 &= -\frac{1}{2} W ∑_{pp'σ}^{} a_{σp+}^{†} a_{-σp'}^{†} a_{-σp'} a_{σp}  \\
+        H &= H_0 + H_1 + H_2
+\end{aligned}
+\]
+rewriting in terms of the quasispin operators, we get:
+\[
+\begin{aligned}
+H_0 &= ϵ J_z \\
+H_1 &= -\frac{V}{2} (J_+^2 + J_-^2) \\
+H_2 &= -\frac{W}{2} (-N +J_+ J_- + J_- J_+)
+\end{aligned}
+\]
+For both the \(J=1 \text{ and } J=5\), we set \(W=0\) so that \(H = H_0+H_1\).
+We now want to show how the Hamiltonian will look in matrix representation. First we need to introduce how the quasispin operators act on a state. 
+\[
+\begin{aligned}
+J_z \ket{j,m_j} &= m_j ℏ \ket{j,m_j} \\
+J_± \ket{j,m_j} &= \sqrt{j(j+1) - m_j(m_j ± 1)} ℏ \ket{j,m_j ± 1}
+\end{aligned}
+\]
+To convert the \(J=1\) Hamiltonian to matrix form, we can use \(\bra{1,-1},\bra{1,0} \bra{1,1}\) to represent the rows and \(\ket{1,-1},\ket{1,0},\ket{1,1}\) to represent the columns. First we will find the matrix elements we get from the \(J_z\) operator.
+\[
+J_z \rightarrow
+\begin{pmatrix} 
+  \bra{1,-1} J_z \ket{1,-1} & \bra{1,-1} J_z \ket{1,0} & \bra{1,-1} J_z \ket{1,1} \\
+        \bra{1,0} J_z \ket{1,-1} & \bra{1,0} J_z \ket{1,0} & \bra{1,0} J_z \ket{1,1} \\
+        \bra{1,1} J_z \ket{1,-1} & \bra{1,1} J_z \ket{1,0} & \bra{1,1} J_z \ket{1,1}
+\end{pmatrix}   
+\] 
+Here we can see that only the diagonal elements are non-zero
+\[
+\begin{pmatrix}
+  -ℏ & 0 & 0 \\
+  0 & 0 & 0 \\
+  0 & 0 & ℏ
+\end{pmatrix}
+\]
+Now we can find the matrix elements we get from the \(J_±\) operator.
+\[
+\begin{aligned}
+        J_+^2 &\rightarrow
+        \begin{pmatrix}
+          \bra{1,-1} J_+ ^2 \ket{1,-1} & \bra{1,-1} J_+ ^2 \ket{1,0} & \bra{1,-1} J_+ ^2 \ket{1,1} \\
+                \bra{1,0} J_+ ^2 \ket{1,-1} & \bra{1,0} J_+ ^2 \ket{1,0} & \bra{1,0} J_+ ^2 \ket{1,1} \\
+                \bra{1,1} J_+ ^2 \ket{1,-1} & \bra{1,1} J_+ ^2 \ket{1,0} & \bra{1,-1} J_+ ^2 \ket{1,1}
+        \end{pmatrix}\\
+        J_-^2 &\rightarrow
+        \begin{pmatrix}
+                \bra{1,-1} J_- ^2 \ket{1,-1} & \bra{1,-1} J_- ^2 \ket{1,0} & \bra{1,-1} J_- ^2 \ket{1,1} \\
+                \bra{1,0} J_- ^2 \ket{1,-1} & \bra{1,0} J_- ^2 \ket{1,0} & \bra{1,0} J_- ^2 \ket{1,1} \\
+                \bra{1,1} J_- ^2 \ket{1,-1} & \bra{1,1} J_- ^2 \ket{1,0} & \bra{1,-1} J_- ^2 \ket{1,1}
+        \end{pmatrix} 
+\end{aligned}
+\]
+The \(J_+^2\) operator only contributes to the top right element, and the \(J_-^2\) operator only contributes to the bottom left element. So we get
+\[
+\begin{aligned}
+        J_+^2 &\rightarrow
+        \begin{pmatrix}
+          0 & 0 & 2ℏ \\
+          0 & 0 & 0 \\
+          0 & 0 & 0
+        \end{pmatrix} \\
+        J_-^2 &\rightarrow
+        \begin{pmatrix}
+          0 & 0 & 0 \\
+          0 & 0 & 0 \\
+          2ℏ & 0 & 0
+        \end{pmatrix}
+\end{aligned}
+\]
+Combining the results, we get the matrix representation of the Hamiltonian for the \(J=1\) system
+\[
+\begin{pmatrix}
+  -ℏ & 0 & 2ℏ \\
+  0 & 0 & 0 \\
+  2ℏ & 0 & ℏ
+\end{pmatrix}
+\]
+If we set \(ℏ = 1\), and since \(H_0 = ϵJ_z\) and \(H_1 = -\frac{V}{2}(J_+ ^2 + J_-^2)\) we get the folloing Hamiltonian matrix for the \(J=1\) system. 
+\[
+H = 
+\begin{pmatrix}
+  -ϵ & 0 & -V \\
+  0 & 0 & 0 \\
+  -V & 0 & ϵ
+\end{pmatrix}
+\]
 
 
 \section{g)}
 
-\section{\href{https://github.com/hishemok/FYS5419/tree/master/Project_1}{Find the codes here}}
+\section{Code}
+\href{https://github.com/hishemok/FYS5419/tree/master/Project_1}{github.com/hishemok/FYS5419/tree/master/Project\_1}
+
 \end{document}
 
 
