@@ -327,7 +327,7 @@ In this section we will use the VQE method to approximate the ground state enner
 \]
 \begin{figure}[h]
         \begin{center}
-                \includegraphics[scale=0.6]{VQE_2qubit.png}
+                \includegraphics[scale=0.4]{VQE_2qubit.png}
         \end{center}
 
         \caption{The figure shows the VQE approximation of the ground state energy of the 2-qubit system, plotted against the exact ground state energy, as functions of the parameter \(λ\).}
@@ -424,19 +424,245 @@ Combining the results, we get the matrix representation of the Hamiltonian for t
 \]
 If we set \(ℏ = 1\), and since \(H_0 = ϵJ_z\) and \(H_1 = -\frac{V}{2}(J_+ ^2 + J_-^2)\) we get the folloing Hamiltonian matrix for the \(J=1\) system. 
 \[
-H = 
+H_{J=1} = 
 \begin{pmatrix}
   -ϵ & 0 & -V \\
   0 & 0 & 0 \\
   -V & 0 & ϵ
 \end{pmatrix}
 \]
+For \(J=2\) we have a \(5 × 5\) matrix, which is given by:
+\[
+H_{J=2} = 
+\begin{pmatrix}
+  -2ϵ & 0 & \sqrt{6}V & 0 & 0 \\
+        0 & -ϵ + 3W & 0 & 3V & 0 \\
+        \sqrt{6}V & 0 & 4W & 0 & \sqrt{6}V \\
+        0 & 3V & 0 & -ϵ + 3W & 0 \\
+        0 & 0 & \sqrt{6}V & 0 & -2ϵ
+\end{pmatrix}
+\]
+Now we want to show how these two Hamiltonian can be rewritten in terms of Pauli spin matrices. \newline
+Lets start with the \(J=1\) case. First, lets recall the Pauli matrices
+\[
+\begin{aligned}
+σ_x &= \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+\end{pmatrix} \\
+σ_y &= \begin{pmatrix}
+        0 & -i \\
+        i & 0
+\end{pmatrix} \\
+σ_z &= \begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+\end{pmatrix}
+\end{aligned}
+\]
+To form the \(J=1\) Hamiltonian in terms of the Pauli matrices, I will start by identifying the diagonal elements. 
+\[
+\begin{aligned}
+σ_z ⊗ I &= 
+\begin{pmatrix}
+  1&0\\0&-1
+\end{pmatrix}
+⊗
+\begin{pmatrix}
+  1&0\\0&1
+\end{pmatrix}
+\\
+&= 
+\begin{pmatrix}
+        1&0&0&0\\
+        0&1&0&0\\
+        0&0&-1&0\\
+        0&0&0&-1
+\end{pmatrix}\\
+σ_z ⊗ σ_z &=
+\begin{pmatrix}
+        1&0\\0&-1
+\end{pmatrix}
+⊗
+\begin{pmatrix}
+        1&0\\0&-1
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+        1&0&0&0\\
+        0&-1&0&0\\
+        0&0&-1&0\\
+        0&0&0&1
+\end{pmatrix}
+\end{aligned}
+\]
+Adding these matrices together and including a factor of \(-
+\frac{ϵ}{2}\)
+\[
+H_0 = -\frac{ϵ}{2} (σ_z ⊗ I + σ_z ⊗ σ_z)\\
+=
+\begin{pmatrix}
+        -ϵ&0&0&0\\
+        0& 0&0&0\\
+        0&0&ϵ&0\\
+        0&0&0&0
+\end{pmatrix}
+\]
+Now we need to find a combination of Pauli spin matrices for the anti-diagonal elements in the \(3 \times 3\) matrix. 
+\[
+\begin{aligned}
+σ_x ⊗ I &= 
+\begin{pmatrix}
+  0&1\\1&0
+\end{pmatrix}
+⊗
+\begin{pmatrix}
+  1&0\\0&1
+\end{pmatrix}
+\\
+&= 
+\begin{pmatrix}
+        0&0&1&0\\
+        0&0&0&1\\
+        1&0&0&0\\
+        0&1&0&0
+\end{pmatrix}\\
+σ_x ⊗ σ_z &=
+\begin{pmatrix}
+        0&1\\1&0
+\end{pmatrix}
+⊗
+\begin{pmatrix}
+        1&0\\0&-1
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+        0&0&1&0\\
+        0&0&0&-1\\
+        1&0&0&0\\
+        0&-1&0&0
+\end{pmatrix}
+\end{aligned}
+\]
+Adding these together with a factor of \(-\frac{V}{2}\), we get
+\[
+H_1 = -\frac{V}{2} (σ_x ⊗ I + σ_x ⊗ σ_z) \\
+= 
+\begin{pmatrix}
+        0&0&-V&0\\
+        0& 0&0&0\\
+        -V&0&0&0\\
+        0&0&0&0
+\end{pmatrix}
+\]
+From this, the total \(J=1\) Hamiltonian is
+\[
+H_{J=1} = 
+\begin{pmatrix}
+        -ϵ&0&-V&0\\
+        0& 0&0&0\\
+        -V&0&ϵ&0\\
+        0&0&0&0
+\end{pmatrix}
+\]
+In order to find an expression for the \(J=2\) Hamiltonina with Pauli matrices, I will have to use block diagonalization to simplify the problem. The thought is to separate the \(5 \times 5\) Hamiltonian into two pieces, one \(3 \times 3\) and one \(2\times 2\). The \(3 \ times 3\) will hold the even numbered column, while the \(2 \times 2\) will hold the odd numbered columns. 
+
+\[
+\begin{aligned}
+H_{3 \times 3} &= 
+\begin{pmatrix}
+  -2ϵ & \sqrt{6}V & 0\\
+  \sqrt{6}V & 0 & \sqrt{6}V\\
+  0& \sqrt{6}V&2ϵ
+\end{pmatrix} \\
+H_{2 \times 2} &= 
+\begin{pmatrix}
+  -ϵ & 3V \\
+  3V & ϵ
+\end{pmatrix}
+\end{aligned}
+\]
+Combining these will look like:
+\[
+H = 
+\begin{pmatrix}
+  H_{3× 3} & \\
+  & H_{2× 2}
+\end{pmatrix}
+\]
+Whats nice about this method, is that the collected eigenvalues of each blocks (\(H_{3\times 3} \text{ and } H_{2× 2} \) ) will have the same eigenvalues as the total \(H_{J=2}\) Hamiltonian. So lets now focus on identifying each blocks with Pauli matrices.\newline
+Lets start with the \(H_{3\times 3}\):
+\[
+H_{3× 3} = -ϵ(σ_z⊗ I + σ_z \otimes σ_z) + \frac{V}{2} \sqrt{6} (I ⊗ σ_x + σ_z⊗ σ_x + σ_x⊗ σ_x +σ_y⊗ σ_y  ) 
+\]
+This will give us the desired \(H_{3\times 3}\) matrix. For the \(H_{2 \times 2}\) we get
+
+\[
+H_{2× 2} = -ϵ σ_z +3V σ_x
+\]
+Notice that the \(H_{3\times 3}\) is actually a \(4\times 4\), but the last rows and columns are \(0\)'s. \newline
+Figure \ref{fig:PauliFigs} shows two plots. The left figure shows the eigenvalues of the \(J=1\) Hamiltonian, and the right hand figure shows the eigenvalues of the \(J=2\) Hamiltonian. The eigenvalues are functions of an interraction parameter \(V\). \newline
+In figure \ref{fig:PauliFigs} we can see a pattern in both figures. The left hand figure displays the eigenvalues of the \(J=1\) Hamiltonian and the right hand figure shows the eigenvalues of the \(J=2\) Hamiltonian. We have, as expected, 3 and 5 eigenvalues for each Hamiltonian. We can see how when the interraction paramter \(V\) increases, the eigenvalues diverge. This is expected as interraction strength increases. 
+
+\begin{figure}[h]
+        \begin{center}
+                \includegraphics[scale=0.3]{J1Hamil.png}
+                \includegraphics[scale=0.3]{J2Hamil.png}       
+        \end{center}
+        \caption{The left figure shows the eigenvalues of the \(J=1\) Hamiltonian, and the right hand figure shows the eigenvalues of the \(J=2\) Hamiltonian.}
+        \label{fig:PauliFigs}
+\end{figure}\newpage
 
 
 \section{g)}
+The ansatzes used for these approximations were as follows:
+\[
+\begin{aligned}
+\ket{ψ_{J=1}} &= CNOT ⋅  R_y(ϕ) ⊗ I ⋅CNOT ⋅  I ⊗ R_x(θ) \ket{00} \\
+\ket{ψ_{J=2}} &= R_y(ϕ_1) ⊗ R_y(ϕ_2) ⊗ R_y(ϕ_3) ⋅ CNOT ⊗ I ⋅ I ⊗ CNOT ⋅  R_y(ϕ_4) ⊗ R_y(ϕ_5) ⊗ R_y(ϕ_6) \ket{000}
+\end{aligned}
+\]
+\begin{figure}
+        \begin{center}
+                \includegraphics[scale=0.3]{VQEj1.png}
+                \includegraphics[scale=0.3]{VQEj2.png}       
+        \end{center}
+        \caption{The left figure shows the VQE method for the \(J=1\) Hamiltonian, and the right hand figure shows the VQE method for the \(J=2\) Hamiltonian.}
+
+        \label{fig:PauliVQE}
+\end{figure}
+Figure \ref{fig:PauliVQE} shows the VQE method for each of the Hamiltonians. We can see that the gradient descent method still does a very good job at approximating the ground state energy of the system. The approximation is almost perfectly aligned with the true ground state we obtained from diagonalization. 
+
+
 
 \section{Code}
 \href{https://github.com/hishemok/FYS5419/tree/master/Project_1}{github.com/hishemok/FYS5419/tree/master/Project\_1}
+
+\section{VQE measurements}
+The measurements I did when I did the VQE method, was to always construct the Hamiltonian with Pauli matrices. This was done to recreate the methods used experimentally. But this meant, that to measure a qubit's state, we could not just take the energy expectation value, but rather we had to measure on each Pauli matrix. Following is a table of Pauli measurements, and the operator \(U\) we had to use to measure the qubit. 
+\begin{table}[h]
+        \centering
+        \begin{tabular}{c|c}
+            \textbf{Pauli Measurement} & \textbf{Operator U} \\ \hline
+            $Z \otimes I$ & $I \otimes I$ \\
+            $X \otimes I$ & $H \otimes I$ \\
+            $Y \otimes I$ & $H S^\dagger \otimes I$ \\
+            $I \otimes Z$ & $(I \otimes I) \text{ SWAP}$ \\
+            $I \otimes X$ & $(H \otimes I) \text{ SWAP}$ \\
+            $I \otimes Y$ & $(H S^\dagger \otimes I) \text{ SWAP}$ \\
+            $Z \otimes Z$ & $CX_{1,0}$ \\
+            $X \otimes Z$ & $CX_{1,0} (H \otimes I)$ \\
+            $Y \otimes Z$ & $CX_{1,0} (H S^\dagger \otimes I)$ \\
+            $Z \otimes X$ & $CX_{1,0} (I \otimes H)$ \\
+            $X \otimes X$ & $CX_{1,0} (H \otimes H)$ \\
+            $Y \otimes X$ & $CX_{1,0} (H S^\dagger \otimes H)$ \\
+            $Z \otimes Y$ & $CX_{1,0} (I \otimes H S^\dagger)$ \\
+            $X \otimes Y$ & $CX_{1,0} (H \otimes H S^\dagger)$ \\
+            $Y \otimes Y$ & $CX_{1,0} (H S^\dagger \otimes H S^\dagger)$ \\
+        \end{tabular}
+        \caption{Pauli measurement operators with no identity.}
+    \end{table}
+    
 
 \end{document}
 
