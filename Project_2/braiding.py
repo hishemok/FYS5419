@@ -98,8 +98,38 @@ def exchange_op(k: int, l: int, N: int) -> np.ndarray:
 
 
 
+g0,g1 = majorana_ops(0, 2)
+g2,g3 = majorana_ops(1, 2)
+
+g0_reshaped = g0.reshape(2,2,2,2)
+g0_new = g0_reshaped[:,0,:,0]
+g1_reshaped = g1.reshape(2,2,2,2)
+g1_new = g1_reshaped[:,0,:,0]
+g2_reshaped = g2.reshape(2,2,2,2)
+g2_new = g2_reshaped[0,:,0,:]
+g3_reshaped = g3.reshape(2,2,2,2)
+g3_new = g3_reshaped[0,:,0,:]
+print(g0_new)
+print(g1_new)
+print(g2_new)
+print(g3_new)
 
 
+print("γ_k γ_l = - γ_l γ_k")
+print("γ_0 γ_1 = - γ_1 γ_0: ", np.allclose(g0 @ g1, -g1 @ g0))
+print("γ_0 γ_2 = - γ_2 γ_0: ", np.allclose(g0 @ g2, -g2 @ g0))
+print("γ_0 γ_3 = - γ_3 γ_0: ", np.allclose(g0 @ g3, -g3 @ g0))
+print("γ_1 γ_2 = - γ_2 γ_1: ", np.allclose(g1 @ g2, -g2 @ g1))
+print("γ_1 γ_3 = - γ_3 γ_1: ", np.allclose(g1 @ g3, -g3 @ g1))
+print("γ_2 γ_3 = - γ_3 γ_2: ", np.allclose(g2 @ g3, -g3 @ g2))
+
+print("γ_k γ_l = - γ_l γ_k")
+print("γ_0 γ_1 = - γ_1 γ_0: ", np.allclose(g0_new @ g1_new, -g1_new @ g0_new))
+print("γ_0 γ_2 = - γ_2 γ_0: ", np.allclose(g0_new @ g2_new, -g2_new @ g0_new))
+print("γ_0 γ_3 = - γ_3 γ_0: ", np.allclose(g0_new @ g3_new, -g3_new @ g0_new))
+print("γ_1 γ_2 = - γ_2 γ_1: ", np.allclose(g1_new @ g2_new, -g2_new @ g1_new))
+print("γ_1 γ_3 = - γ_3 γ_1: ", np.allclose(g1_new @ g3_new, -g3_new @ g1_new))
+print("γ_2 γ_3 = - γ_3 γ_2: ", np.allclose(g2_new @ g3_new, -g3_new @ g2_new))
 
 
 
