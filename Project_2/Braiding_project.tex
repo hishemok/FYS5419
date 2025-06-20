@@ -167,7 +167,7 @@
     \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
     % Document parameters
     % Document title
-    \title{FYS5419: Project 2 - Braiding of Poor Mans Majorana (PMM)}
+    \title{Braiding\_project}
     
     
     
@@ -394,6 +394,9 @@
     
 
     
+    \section{FYS5419: Project 2 - Braiding of Poor Mans Majorana
+(PMM)}\label{fys5419-project-2---braiding-of-poor-mans-majorana-pmm}
+
 \subsection{Authors: Hishem Kløvnes, Oskar
 Idland}\label{authors-hishem-kluxf8vnes-oskar-idland}
 
@@ -581,7 +584,7 @@ B²_{23} &= -Z
     \subsubsection{Imports and configs}\label{imports-and-configs}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{1}{\boxspacing}
+\prompt{In}{incolor}{6}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
 \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
@@ -611,13 +614,18 @@ B²_{23} &= -Z
 Majoranas}\label{braiding-operator-in-terms-of-majoranas}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{2}{\boxspacing}
+\prompt{In}{incolor}{7}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Check properties of the Braiding operators\PYZdq{}\PYZdq{}\PYZdq{}}
 \PY{k}{def} \PY{n+nf}{pauli\PYZus{}matrices}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-    \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
-    \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{n}{j}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{n}{j}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
-    \PY{n}{Z} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+    \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} 
+                  \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+    
+    \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{n}{j}\PY{p}{]}\PY{p}{,} 
+                  \PY{p}{[}\PY{l+m+mi}{1}\PY{n}{j}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+    
+    \PY{n}{Z} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} 
+                  \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
     \PY{n}{I} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{eye}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
     \PY{k}{return} \PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{,} \PY{n}{Z}\PY{p}{,} \PY{n}{I}
 
@@ -679,7 +687,7 @@ All tests passed!
 basis}{Braiding operators in \textbackslash ket\{+-\}, \textbackslash ket\{-+\} basis}}\label{braiding-operators-in-ket--ket--basis}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{3}{\boxspacing}
+\prompt{In}{incolor}{8}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} \PYZdq{}\PYZdq{}\PYZdq{} Express B in the \PYZbs{}ket\PYZob{}+\PYZhy{}\PYZcb{}, \PYZbs{}ket\PYZob{}+\PYZhy{}\PYZcb{} basis\PYZdq{}\PYZdq{}\PYZdq{}}
 \PY{n}{ket\PYZus{}pm} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
@@ -796,109 +804,77 @@ H(t) = ∑_{j=1}^{3} iΔ_j (t) γ_0γ_j
 tensor products of local Pauli or spin operators.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{4}{\boxspacing}
+\prompt{In}{incolor}{9}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{tensor\PYZus{}product}\PY{p}{(}\PY{n}{arrays}\PY{p}{)}\PY{p}{:}
+\PY{k}{def} \PY{n+nf}{tensor\PYZus{}product}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Compute the tensor product of multiple matrices.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{result} \PY{o}{=} \PY{n}{args}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+    \PY{k}{for} \PY{n}{mat} \PY{o+ow}{in} \PY{n}{args}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{:}
+        \PY{n}{result} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{kron}\PY{p}{(}\PY{n}{result}\PY{p}{,} \PY{n}{mat}\PY{p}{)}
+    \PY{k}{return} \PY{n}{result}   
+
+\PY{k}{def} \PY{n+nf}{sigma\PYZus{}site}\PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{n}{operator}\PY{p}{)}\PY{p}{:}
+\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Return the operator for site j in a chain of n sites.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{ops} \PY{o}{=} \PY{p}{[}\PY{n}{I}\PY{p}{]} \PY{o}{*} \PY{n}{n}
+    \PY{n}{ops}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n}{operator}
+    \PY{k}{return} \PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{o}{*}\PY{n}{ops}\PY{p}{)}
+
+
+\PY{k}{def} \PY{n+nf}{creation\PYZus{}annihilation}\PY{p}{(}\PY{n}{j}\PY{p}{,}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+
+
+    \PY{n}{f\PYZus{}dag} \PY{o}{=} \PY{p}{(}\PY{n}{sigma\PYZus{}site}\PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{n}{X}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{n}{j} \PY{o}{*} \PY{n}{sigma\PYZus{}site}\PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{n}{Y}\PY{p}{)}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{0.5}
+    \PY{n}{f} \PY{o}{=} \PY{p}{(}\PY{n}{sigma\PYZus{}site}\PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{n}{X}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{n}{j} \PY{o}{*} \PY{n}{sigma\PYZus{}site}\PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{n}{Y}\PY{p}{)}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{0.5}
+
+    \PY{n}{Zops} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{eye}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{o}{*}\PY{n}{n}\PY{p}{)} 
+    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{j}\PY{p}{)}\PY{p}{:}
+        \PY{n}{Zops} \PY{o}{@}\PY{o}{=} \PY{n}{sigma\PYZus{}site}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{n}{Z}\PY{p}{)}
+
+
+    \PY{n}{create} \PY{o}{=} \PY{n}{Zops} \PY{o}{@} \PY{n}{f\PYZus{}dag} 
+    \PY{n}{annihilate} \PY{o}{=} \PY{n}{Zops} \PY{o}{@} \PY{n}{f} 
+
+    \PY{k}{return} \PY{n}{create}\PY{p}{,} \PY{n}{annihilate}
+
+
+\PY{k}{def} \PY{n+nf}{majoranas}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+    \PY{n}{gammas} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+    \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+        \PY{n}{a\PYZus{}dag}\PY{p}{,} \PY{n}{a} \PY{o}{=} \PY{n}{creation\PYZus{}annihilation}\PY{p}{(}\PY{n}{j}\PY{p}{,}\PY{n}{n}\PY{p}{)}
+
+        \PY{n}{gamma1} \PY{o}{=} \PY{n}{a\PYZus{}dag} \PY{o}{+} \PY{n}{a}
+        \PY{n}{gamma2} \PY{o}{=} \PY{l+m+mi}{1}\PY{n}{j} \PY{o}{*} \PY{p}{(}\PY{n}{a\PYZus{}dag} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}
+
+        \PY{n}{gammas}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{gamma1}\PY{p}{)}
+        \PY{n}{gammas}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{gamma2}\PY{p}{)}
+    \PY{n}{gammas} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{gammas}\PY{p}{)}
+    \PY{k}{return} \PY{n}{gammas}
+
+\PY{k}{def} \PY{n+nf}{delta}\PY{p}{(}\PY{n}{i}\PY{p}{,}\PY{n}{j}\PY{p}{)}\PY{p}{:}
+\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Kronecker delta function.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{k}{return} \PY{n}{i} \PY{o}{==} \PY{n}{j}
+
+\PY{k}{def} \PY{n+nf}{braiding\PYZus{}operators}\PY{p}{(}\PY{n}{i}\PY{p}{,}\PY{n}{j}\PY{p}{)}\PY{p}{:}
 \PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
-\PY{l+s+sd}{    Computes the tensor product of a list of arrays}
+\PY{l+s+sd}{    Returns braiding operators for adjacent Majorana operators}
 \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{n}{result} \PY{o}{=} \PY{n}{arrays}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
-    \PY{k}{for} \PY{n}{array} \PY{o+ow}{in} \PY{n}{arrays}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{:}
-        \PY{n}{result} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{kron}\PY{p}{(}\PY{n}{result}\PY{p}{,} \PY{n}{array}\PY{p}{)}
-    \PY{k}{return} \PY{n}{result}
+    \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{1}\PY{n}{j}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{kron}\PY{p}{(}\PY{n}{I}\PY{p}{,}\PY{n}{I}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{i}\PY{n+nd}{@j}\PY{p}{)}
 
 
-\PY{k}{def} \PY{n+nf}{creation\PYZus{}operator}\PY{p}{(}\PY{n}{j}\PY{p}{:}\PY{n+nb}{int}\PY{p}{,} \PY{n}{N}\PY{p}{:}\PY{n+nb}{int}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n}{np}\PY{o}{.}\PY{n}{ndarray}\PY{p}{:}
-\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
-\PY{l+s+sd}{    Returns the creation operator for a particle at site j for a N\PYZhy{}site system}
-\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{n}{operators} \PY{o}{=} \PY{p}{[}\PY{n}{I}\PY{p}{]} \PY{o}{*} \PY{n}{N}
-
-    \PY{n}{z\PYZus{}op} \PY{o}{=} \PY{n}{operators}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
-    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{j}\PY{p}{)}\PY{p}{:}
-        \PY{n}{z\PYZus{}op}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{Z}
+\PY{k}{def} \PY{n+nf}{check\PYZus{}anti\PYZus{}commutation}\PY{p}{(}\PY{n}{gammas}\PY{p}{)}\PY{p}{:}
+\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Check the anti\PYZhy{}commutation relations of Majorana operators.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{c+c1}{\PYZsh{} n = len(gammas)\PYZsq{}}
+    \PY{n}{n} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{gammas}\PY{p}{)} 
+    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+        \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{n}{result} \PY{o}{=} \PY{n}{gammas}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{@} \PY{n}{gammas}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{+} \PY{n}{gammas}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{@} \PY{n}{gammas}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+            \PY{n}{expected} \PY{o}{=} \PY{l+m+mi}{2} \PY{o}{*} \PY{n}{delta}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{eye}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{n}{n}\PY{o}{/}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+            \PY{k}{assert} \PY{n}{np}\PY{o}{.}\PY{n}{allclose}\PY{p}{(}\PY{n}{result}\PY{p}{,} \PY{n}{expected}\PY{p}{)}\PY{p}{,} \PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Anti\PYZhy{}commutation failed for }\PY{l+s+si}{\PYZob{}}\PY{n}{i}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}}\PY{n}{j}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{. Expected:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}}\PY{n}{expected}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{,}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{got:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}}\PY{n}{result}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
     
-    \PY{n}{z\PYZus{}op} \PY{o}{=} \PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{n}{z\PYZus{}op}\PY{p}{)}
-    \PY{n}{x\PYZus{}op} \PY{o}{=} \PY{n}{operators}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
-    \PY{n}{x\PYZus{}op}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n}{X}
-    \PY{n}{x\PYZus{}op} \PY{o}{=} \PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{n}{x\PYZus{}op}\PY{p}{)}
-    \PY{n}{y\PYZus{}op} \PY{o}{=} \PY{n}{operators}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
-    \PY{n}{y\PYZus{}op}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n}{Y}
-    \PY{n}{y\PYZus{}op} \PY{o}{=} \PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{n}{y\PYZus{}op}\PY{p}{)}
-    \PY{k}{return} \PY{l+m+mf}{0.5} \PY{o}{*} \PY{n}{z\PYZus{}op} \PY{o}{@} \PY{p}{(}\PY{n}{x\PYZus{}op} \PY{o}{+} \PY{l+m+mi}{1}\PY{n}{j}\PY{o}{*}\PY{n}{y\PYZus{}op}\PY{p}{)}
-
-
-\PY{k}{def} \PY{n+nf}{annihilation\PYZus{}operator}\PY{p}{(}\PY{n}{j}\PY{p}{:}\PY{n+nb}{int}\PY{p}{,} \PY{n}{N}\PY{p}{:}\PY{n+nb}{int}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n}{np}\PY{o}{.}\PY{n}{ndarray}\PY{p}{:}
-\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
-\PY{l+s+sd}{    Returns the annihilation operator for a particle at site j for a N\PYZhy{}site system}
-\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{n}{operators} \PY{o}{=} \PY{p}{[}\PY{n}{I}\PY{p}{]} \PY{o}{*} \PY{n}{N}
-    \PY{n}{z\PYZus{}op} \PY{o}{=} \PY{n}{operators}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
-    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{j}\PY{p}{)}\PY{p}{:}
-        \PY{n}{z\PYZus{}op}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{Z}
-    
-    \PY{n}{z\PYZus{}op} \PY{o}{=} \PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{n}{z\PYZus{}op}\PY{p}{)}
-    \PY{n}{x\PYZus{}op} \PY{o}{=} \PY{n}{operators}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
-    \PY{n}{x\PYZus{}op}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n}{X}
-    \PY{n}{x\PYZus{}op} \PY{o}{=} \PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{n}{x\PYZus{}op}\PY{p}{)}
-    \PY{n}{y\PYZus{}op} \PY{o}{=} \PY{n}{operators}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
-    \PY{n}{y\PYZus{}op}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n}{Y}
-    \PY{n}{y\PYZus{}op} \PY{o}{=} \PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{n}{y\PYZus{}op}\PY{p}{)}
-    \PY{k}{return} \PY{l+m+mf}{0.5} \PY{o}{*} \PY{n}{z\PYZus{}op} \PY{o}{@} \PY{p}{(}\PY{n}{x\PYZus{}op} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{n}{j}\PY{o}{*}\PY{n}{y\PYZus{}op}\PY{p}{)}
-
-
-\PY{k}{def} \PY{n+nf}{majorana\PYZus{}ops}\PY{p}{(}\PY{n}{j}\PY{p}{:}\PY{n+nb}{int}\PY{p}{,} \PY{n}{N}\PY{p}{:}\PY{n+nb}{int}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n}{np}\PY{o}{.}\PY{n}{ndarray}\PY{p}{:}
-\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
-\PY{l+s+sd}{    Returns the Majorana operators for a particle at site j for a N\PYZhy{}site system}
-\PY{l+s+sd}{    Order (gamma\PYZus{}\PYZob{}2j\PYZhy{}1\PYZcb{}, gamma\PYZus{}\PYZob{}2j\PYZcb{})}
-\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{n}{cj} \PY{o}{=} \PY{n}{annihilation\PYZus{}operator}\PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{n}{N}\PY{p}{)}
-    \PY{n}{cj\PYZus{}dagger} \PY{o}{=} \PY{n}{creation\PYZus{}operator}\PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{n}{N}\PY{p}{)}
-    \PY{n}{gamma1} \PY{o}{=} \PY{n}{cj\PYZus{}dagger} \PY{o}{+} \PY{n}{cj}
-    \PY{n}{gamma2} \PY{o}{=} \PY{l+m+mi}{1}\PY{n}{j} \PY{o}{*} \PY{p}{(}\PY{n}{cj} \PY{o}{\PYZhy{}} \PY{n}{cj\PYZus{}dagger}\PY{p}{)}
-    \PY{k}{return} \PY{n}{gamma1}\PY{p}{,} \PY{n}{gamma2}
-
-
-\PY{k}{def} \PY{n+nf}{δ}\PY{p}{(}\PY{n}{i}\PY{p}{:}\PY{n+nb}{int}\PY{p}{,} \PY{n}{j}\PY{p}{:}\PY{n+nb}{int}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n+nb}{int}\PY{p}{:}
-\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
-\PY{l+s+sd}{    Kronecker delta function}
-\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{k}{return} \PY{n+nb}{int}\PY{p}{(}\PY{n}{i} \PY{o}{==} \PY{n}{j}\PY{p}{)}
-
-\PY{k}{def} \PY{n+nf}{test\PYZus{}expected\PYZus{}majorana\PYZus{}ops}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
-\PY{l+s+sd}{    Test the expected Majorana operators}
-\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{n}{γ0}\PY{p}{,}\PY{n}{γ1} \PY{o}{=} \PY{n}{majorana\PYZus{}ops}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)} \PY{c+c1}{\PYZsh{}\PYZsh{} 0 refers to c\PYZus{}1}
-    \PY{n}{γ2}\PY{p}{,}\PY{n}{γ3} \PY{o}{=} \PY{n}{majorana\PYZus{}ops}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)} \PY{c+c1}{\PYZsh{}\PYZsh{} 1 refers to c\PYZus{}2}
-    \PY{n}{γ4}\PY{p}{,}\PY{n}{γ5} \PY{o}{=} \PY{n}{majorana\PYZus{}ops}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)} \PY{c+c1}{\PYZsh{}\PYZsh{} 2 refers to c\PYZus{}3}
-
-
-    \PY{c+c1}{\PYZsh{}Check anticommutation relations}
-    \PY{n}{gammas} \PY{o}{=} \PY{p}{[}\PY{n}{γ0}\PY{p}{,}\PY{n}{γ1}\PY{p}{,}\PY{n}{γ2}\PY{p}{,}\PY{n}{γ3}\PY{p}{,}\PY{n}{γ4}\PY{p}{,}\PY{n}{γ5}\PY{p}{]}
-    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{gammas}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-        \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{gammas}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-            \PY{k}{assert} \PY{n}{np}\PY{o}{.}\PY{n}{allclose}\PY{p}{(}\PY{n}{gammas}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{@} \PY{n}{gammas}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{+} \PY{n}{gammas}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{@} \PY{n}{gammas}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{δ}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{eye}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{gamma}\PY{l+s+si}{\PYZob{}}\PY{n}{i}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{ and gamma}\PY{l+s+si}{\PYZob{}}\PY{n}{j}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{ do not anticommute}\PY{l+s+s2}{\PYZdq{}}
-
-    \PY{k}{assert} \PY{n}{np}\PY{o}{.}\PY{n}{allclose}\PY{p}{(}\PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{n}{X}\PY{p}{,}\PY{n}{I}\PY{p}{,}\PY{n}{I}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{γ0}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{γ0 does not match}\PY{l+s+s2}{\PYZdq{}} \PY{c+c1}{\PYZsh{}\PYZsh{} real}
-    \PY{k}{assert} \PY{n}{np}\PY{o}{.}\PY{n}{allclose}\PY{p}{(}\PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{n}{Y}\PY{p}{,}\PY{n}{I}\PY{p}{,}\PY{n}{I}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{γ1}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{γ1 does not match}\PY{l+s+s2}{\PYZdq{}} \PY{c+c1}{\PYZsh{}\PYZsh{} imaginary}
-    \PY{k}{assert} \PY{n}{np}\PY{o}{.}\PY{n}{allclose}\PY{p}{(}\PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{n}{Z}\PY{p}{,}\PY{n}{X}\PY{p}{,}\PY{n}{I}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{γ2}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{γ2 does not match}\PY{l+s+s2}{\PYZdq{}}
-    \PY{k}{assert} \PY{n}{np}\PY{o}{.}\PY{n}{allclose}\PY{p}{(}\PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{n}{Z}\PY{p}{,}\PY{n}{Y}\PY{p}{,}\PY{n}{I}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{γ3}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{γ3 does not match}\PY{l+s+s2}{\PYZdq{}}
-    \PY{k}{assert} \PY{n}{np}\PY{o}{.}\PY{n}{allclose}\PY{p}{(}\PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{n}{Z}\PY{p}{,}\PY{n}{Z}\PY{p}{,}\PY{n}{X}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{γ4}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{γ4 does not match}\PY{l+s+s2}{\PYZdq{}}
-    \PY{k}{assert} \PY{n}{np}\PY{o}{.}\PY{n}{allclose}\PY{p}{(}\PY{n}{tensor\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{n}{Z}\PY{p}{,}\PY{n}{Z}\PY{p}{,}\PY{n}{Y}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{γ5}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{γ5 does not match}\PY{l+s+s2}{\PYZdq{}}
-
-    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{All tests passed!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-
-\PY{n}{test\PYZus{}expected\PYZus{}majorana\PYZus{}ops}\PY{p}{(}\PY{p}{)}
-
-\PY{n}{γ0}\PY{p}{,} \PY{n}{γ1} \PY{o}{=} \PY{n}{majorana\PYZus{}ops}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}  \PY{c+c1}{\PYZsh{} gamma\PYZus{}1, gamma\PYZus{}2}
-\PY{n}{γ2}\PY{p}{,} \PY{n}{γ3} \PY{o}{=} \PY{n}{majorana\PYZus{}ops}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}  \PY{c+c1}{\PYZsh{} gamma\PYZus{}3, gamma\PYZus{}4}
+\PY{n}{gammas} \PY{o}{=} \PY{n}{majoranas}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
+\PY{n}{check\PYZus{}anti\PYZus{}commutation}\PY{p}{(}\PY{n}{gammas}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-All tests passed!
-    \end{Verbatim}
 
     \subsubsection{Section c: Summary}\label{section-c-summary}
 
@@ -923,9 +899,7 @@ relations \[
 \{γ_i, γ_j\} = 2δ_{ij}
 \]
 
-To actually fulfill these relations, we resorted to redifine \(γ_2\) as
-\(γ_2 = i(f_1 - f_1^{†})\), which allowed us to pass the tests and
-hopefully get the expected behaviour.
+and they did
 
     \subsection{d) Implement the Hamiltonian
 numerically}\label{d-implement-the-hamiltonian-numerically}
@@ -947,7 +921,7 @@ With \(H(t)\) implemented, study how the energy spectrum evolves during
 the protocol. Does it match expectations?
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{5}{\boxspacing}
+\prompt{In}{incolor}{10}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n+nd}{@njit}
 \PY{k}{def} \PY{n+nf}{delta\PYZus{}pulse}\PY{p}{(}\PY{n}{t}\PY{p}{,} \PY{n}{T\PYZus{}peak}\PY{p}{,} \PY{n}{width}\PY{p}{,} \PY{n}{s}\PY{p}{,} \PY{n}{Δ\PYZus{}max}\PY{p}{,} \PY{n}{Δ\PYZus{}min}\PY{p}{)}\PY{p}{:}
@@ -1027,9 +1001,8 @@ the protocol. Does it match expectations?
     \PY{n}{plt}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
     \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 
-\PY{n}{γ0}\PY{p}{,} \PY{n}{γ1} \PY{o}{=} \PY{n}{majorana\PYZus{}ops}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}  \PY{c+c1}{\PYZsh{} γ₀, γ₁}
-\PY{n}{γ2}\PY{p}{,} \PY{n}{γ3} \PY{o}{=} \PY{n}{majorana\PYZus{}ops}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}  \PY{c+c1}{\PYZsh{} γ₂, γ₃}
 
+\PY{n}{γ0}\PY{p}{,} \PY{n}{γ1}\PY{p}{,} \PY{n}{γ2}\PY{p}{,} \PY{n}{γ3} \PY{o}{=} \PY{n}{majoranas}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
 
 \PY{n}{T\PYZus{}total} \PY{o}{=} \PY{l+m+mf}{1.0}
 \PY{n}{Δ\PYZus{}max} \PY{o}{=} \PY{l+m+mf}{1.0}
@@ -1108,10 +1081,8 @@ that the protocol succeeds and implements the desired exchange gate -
 Measure parities during the protocol. Do they behave as expected?
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{6}{\boxspacing}
+\prompt{In}{incolor}{11}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{linalg} \PY{k+kn}{import} \PY{n}{expm}
-
 \PY{n+nd}{@njit}
 \PY{k}{def} \PY{n+nf}{adiabaticity\PYZus{}parameter}\PY{p}{(}\PY{n}{H\PYZus{}curr}\PY{p}{,}\PY{n}{H\PYZus{}prev}\PY{p}{,} \PY{n}{ground\PYZus{}vec}\PY{p}{,} \PY{n}{excited\PYZus{}vec}\PY{p}{,} \PY{n}{ground\PYZus{}energy}\PY{p}{,} \PY{n}{excited\PYZus{}energy}\PY{p}{,} \PY{n}{dt}\PY{p}{)}\PY{p}{:}
 \PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
@@ -1221,10 +1192,9 @@ Measure parities during the protocol. Do they behave as expected?
     \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 
 
-\PY{n}{γ0}\PY{p}{,} \PY{n}{γ1} \PY{o}{=} \PY{n}{majorana\PYZus{}ops}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}  \PY{c+c1}{\PYZsh{} γ₀, γ₁}
-\PY{n}{γ2}\PY{p}{,} \PY{n}{γ3} \PY{o}{=} \PY{n}{majorana\PYZus{}ops}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}  \PY{c+c1}{\PYZsh{} γ₂, γ₃}
+\PY{n}{γ0}\PY{p}{,} \PY{n}{γ1}\PY{p}{,} \PY{n}{γ2}\PY{p}{,} \PY{n}{γ3} \PY{o}{=} \PY{n}{majoranas}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
 
-\PY{n}{T\PYZus{}total} \PY{o}{=} \PY{l+m+mi}{1000}
+\PY{n}{T\PYZus{}total} \PY{o}{=} \PY{l+m+mi}{100}
 \PY{n}{Δ\PYZus{}max} \PY{o}{=} \PY{l+m+mi}{100}
 \PY{n}{Δ\PYZus{}min} \PY{o}{=} \PY{l+m+mf}{0.0}
 
@@ -1239,7 +1209,7 @@ Measure parities during the protocol. Do they behave as expected?
     \subsubsection{Figure e.1}\label{figure-e.1}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{7}{\boxspacing}
+\prompt{In}{incolor}{12}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{times}\PY{p}{,} \PY{n}{ψ}\PY{p}{,} \PY{n}{norms}\PY{p}{,} \PY{n}{couplings}\PY{p}{,} \PY{n}{evals}\PY{p}{,} \PY{n}{evecs}\PY{p}{,} \PY{n}{ΔE}\PY{p}{,} \PY{n}{ΔH}  \PY{o}{=} \PY{n}{evolve\PYZus{}wavefunction}\PY{p}{(}\PY{n}{ψ0}\PY{p}{,} \PY{n}{T\PYZus{}total}\PY{p}{,} \PY{n}{Δ\PYZus{}max}\PY{p}{,} \PY{n}{Δ\PYZus{}min}\PY{p}{,} \PY{n}{s}\PY{p}{,} \PY{n}{width}\PY{p}{,} \PY{n}{γ0}\PY{p}{,} \PY{n}{γ1}\PY{p}{,} \PY{n}{γ2}\PY{p}{,} \PY{n}{γ3}\PY{p}{,} \PY{n}{n\PYZus{}steps}\PY{o}{=}\PY{l+m+mi}{4000}\PY{p}{)}
 \PY{n}{plot\PYZus{}evolution}\PY{p}{(}\PY{n}{times}\PY{p}{,} \PY{n}{ψ}\PY{p}{,} \PY{n}{norms}\PY{p}{,} \PY{n}{couplings}\PY{p}{,}\PY{n}{evals}\PY{p}{)}
@@ -1247,8 +1217,8 @@ Measure parities during the protocol. Do they behave as expected?
 \end{tcolorbox}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-/tmp/ipykernel\_1280239/2578296829.py:54: NumbaPerformanceWarning: '@' is faster
-on contiguous arrays, called on (Array(complex128, 2, 'A', False, aligned=True),
+/tmp/ipykernel\_94568/1270564510.py:52: NumbaPerformanceWarning: '@' is faster on
+contiguous arrays, called on (Array(complex128, 2, 'A', False, aligned=True),
 Array(complex128, 1, 'C', False, aligned=True))
   ψ[i] = tmp @ ψ[i-1]  \# Time evolution using matrix exponential
     \end{Verbatim}
@@ -1261,7 +1231,7 @@ Array(complex128, 1, 'C', False, aligned=True))
     \subsubsection{Figure e.2}\label{figure-e.2}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{8}{\boxspacing}
+\prompt{In}{incolor}{13}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{times}\PY{p}{,} \PY{n}{ΔE}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}η\PYZus{}}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{gs,es\PYZcb{}\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{blue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}⟨m|}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{dot}\PY{l+s+si}{\PYZob{}H\PYZcb{}}\PY{l+s+s1}{|n⟩/ΔE\PYZus{}}\PY{l+s+si}{\PYZob{}nm\PYZcb{}}\PY{l+s+s1}{\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -1293,7 +1263,7 @@ Array(complex128, 1, 'C', False, aligned=True))
     \subsubsection{figure e.3}\label{figure-e.3}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{9}{\boxspacing}
+\prompt{In}{incolor}{14}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{basis\PYZus{}parities} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
 
@@ -1344,14 +1314,14 @@ Array(complex128, 1, 'C', False, aligned=True))
 \end{tcolorbox}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-/tmp/ipykernel\_1280239/1466126454.py:9: ComplexWarning: Casting complex values
-to real discards the imaginary part
+/tmp/ipykernel\_94568/1156144857.py:9: ComplexWarning: Casting complex values to
+real discards the imaginary part
   Parities[i, 0] = (np.vdot(ψ[i], op1@ψ[i]))
-/tmp/ipykernel\_1280239/1466126454.py:10: ComplexWarning: Casting complex values
-to real discards the imaginary part
+/tmp/ipykernel\_94568/1156144857.py:10: ComplexWarning: Casting complex values to
+real discards the imaginary part
   Parities[i, 1] = (np.vdot(ψ[i], op2@ψ[i]))
-/tmp/ipykernel\_1280239/1466126454.py:11: ComplexWarning: Casting complex values
-to real discards the imaginary part
+/tmp/ipykernel\_94568/1156144857.py:11: ComplexWarning: Casting complex values to
+real discards the imaginary part
   Parities[i, 2] = (np.vdot(ψ[i], op3@ψ[i]))
     \end{Verbatim}
 
@@ -1367,15 +1337,13 @@ evolution of the wavefunction, the norm of the wavefunction, the
 time-dependent couplings and the energy eigenvalues. The norm of the
 wavefunction is always 1, which is great. The wavefunction \(\ket{ψ}\)
 is initialized as \$ \ket{+-}={[}0,1,0,0{]}\$. During the protocol,
-\(\ket{ψ}\) oscillates rapidly between the two states \(\ket{+ -}\) and
-\(\ket{- +}\), and ends up in the state \(\ket{+-}\). The rapid
-oscillations might point to some implementation issues, but later we
-will measure the fidelity of the protocol to find theac curacy of the
-braiding. The energy eigenvalues behaves as expected, with a twofold
-degeneracy at \(± Δ_{\max}\), just as before. The time-dependent
-couplings \(Δ_j(t)\) are also as expected, as we have made sure that
-both the width and the steepness of the couplings are adjusted to fit
-the protocol, no matter how long it takes to run the protocol.
+\(\ket{ψ}\) oscillates between the two states \(\ket{+ -}\) and
+\(\ket{- +}\), and ends up in the state \(\ket{+-}\). The energy
+eigenvalues behaves as expected, with a twofold degeneracy at
+\(± Δ_{\max}\), just as before. The time-dependent couplings \(Δ_j(t)\)
+are also as expected, as we have made sure that both the width and the
+steepness of the couplings are adjusted to fit the protocol, no matter
+how long it takes to run the protocol.
 
 As seen in figure \hyperref[figure-e2]{e.2}, we have two measurements.
 The above plot measures \[
@@ -1422,11 +1390,17 @@ diagonalizing the Hamiltonian, or analytically if the hamitonian is
 simple enough.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{10}{\boxspacing}
+\prompt{In}{incolor}{15}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{linalg} \PY{k+kn}{import} \PY{n}{expm}
-\PY{k+kn}{from} \PY{n+nn}{numba} \PY{k+kn}{import} \PY{n}{njit}\PY{p}{,} \PY{n}{objmode}
+\PY{c+c1}{\PYZsh{} from scipy.linalg import expm}
+\PY{c+c1}{\PYZsh{} from numba import njit, objmode}
 \PY{c+c1}{\PYZsh{}\PYZsh{} Non\PYZhy{}abelian berry phase kato method}
+
+\PY{k}{def} \PY{n+nf}{orthonormalize}\PY{p}{(}\PY{n}{vs}\PY{p}{)}\PY{p}{:}
+\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Orthonormalize columns of vs using QR decomposition.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{q}\PY{p}{,} \PY{n}{\PYZus{}} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linalg}\PY{o}{.}\PY{n}{qr}\PY{p}{(}\PY{n}{vs}\PY{p}{)}
+    \PY{k}{return} \PY{n}{q}
+
 \PY{n+nd}{@njit}
 \PY{k}{def} \PY{n+nf}{berry\PYZus{}phase\PYZus{}kato}\PY{p}{(}\PY{n}{times}\PY{p}{,} \PY{n}{evecs}\PY{p}{)}\PY{p}{:}
     \PY{n}{n} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{times}\PY{p}{)}
@@ -1435,28 +1409,33 @@ simple enough.
     \PY{n}{U} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{eye}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{complex128}\PY{p}{)}
 
     \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{n} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
-        \PY{n}{P} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{outer}\PY{p}{(}\PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]} \PY{p}{,}\PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{conj}\PY{p}{(}\PY{p}{)} \PY{p}{)} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{outer}\PY{p}{(}\PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]} \PY{p}{,}\PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{conj}\PY{p}{(}\PY{p}{)}\PY{p}{)}
-        \PY{n}{P\PYZus{}next} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{outer}\PY{p}{(}\PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]} \PY{p}{,}\PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{conj}\PY{p}{(}\PY{p}{)} \PY{p}{)} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{outer}\PY{p}{(}\PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]} \PY{p}{,}\PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{conj}\PY{p}{(}\PY{p}{)}\PY{p}{)}
-    
-        \PY{n}{dPdt} \PY{o}{=} \PY{p}{(}\PY{n}{P\PYZus{}next} \PY{o}{\PYZhy{}} \PY{n}{P}\PY{p}{)} \PY{o}{/} \PY{n}{dt}
-        \PY{n}{K} \PY{o}{=} \PY{p}{(}\PY{n}{P} \PY{o}{@} \PY{n}{dPdt} \PY{o}{\PYZhy{}} \PY{n}{dPdt} \PY{o}{@} \PY{n}{P}\PY{p}{)}
-        \PY{k}{with} \PY{n}{objmode}\PY{p}{(}\PY{n}{tmp} \PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{complex128[:,:]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{:}
-            \PY{n}{tmp} \PY{o}{=} \PY{n}{expm}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{dt} \PY{o}{*} \PY{n}{K}\PY{p}{)}
-        
-        \PY{n}{U} \PY{o}{=} \PY{n}{tmp} \PY{o}{@} \PY{n}{U}
-        
-    \PY{k}{return} \PY{n}{U}
+        \PY{c+c1}{\PYZsh{} Pull out the two eigenvectors at step i and i+1}
+        \PY{n}{v1} \PY{o}{=} \PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}
+        \PY{n}{v2} \PY{o}{=} \PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}
+        \PY{n}{w1} \PY{o}{=} \PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,} \PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}
+        \PY{n}{w2} \PY{o}{=} \PY{n}{evecs}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,} \PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}
 
-\PY{n}{U} \PY{o}{=} \PY{n}{berry\PYZus{}phase\PYZus{}kato}\PY{p}{(}\PY{n}{times}\PY{p}{,} \PY{n}{evecs}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} Build orthonormal subspace basis}
+        \PY{n}{V} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{column\PYZus{}stack}\PY{p}{(}\PY{p}{(}\PY{n}{v1}\PY{p}{,} \PY{n}{v2}\PY{p}{)}\PY{p}{)}
+        \PY{n}{W} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{column\PYZus{}stack}\PY{p}{(}\PY{p}{(}\PY{n}{w1}\PY{p}{,} \PY{n}{w2}\PY{p}{)}\PY{p}{)}
+
+        \PY{c+c1}{\PYZsh{} [Optional] Align gauge by maximizing overlap}
+        \PY{c+c1}{\PYZsh{} Replace with actual QR or SVD if needed}
+
+        \PY{n}{P} \PY{o}{=} \PY{n}{V} \PY{o}{@} \PY{n}{V}\PY{o}{.}\PY{n}{conj}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{T}
+        \PY{n}{P\PYZus{}next} \PY{o}{=} \PY{n}{W} \PY{o}{@} \PY{n}{W}\PY{o}{.}\PY{n}{conj}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{T}
+
+        \PY{n}{dPdt} \PY{o}{=} \PY{p}{(}\PY{n}{P\PYZus{}next} \PY{o}{\PYZhy{}} \PY{n}{P}\PY{p}{)} \PY{o}{/} \PY{n}{dt}
+        \PY{n}{K} \PY{o}{=} \PY{n}{P} \PY{o}{@} \PY{n}{dPdt} \PY{o}{\PYZhy{}} \PY{n}{dPdt} \PY{o}{@} \PY{n}{P}
+
+        \PY{k}{with} \PY{n}{objmode}\PY{p}{(}\PY{n}{tmp}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{complex128[:,:]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{:}
+            \PY{n}{tmp} \PY{o}{=} \PY{n}{expm}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{dt} \PY{o}{*} \PY{n}{K}\PY{p}{)}
+
+        \PY{n}{U} \PY{o}{=} \PY{n}{tmp} \PY{o}{@} \PY{n}{U}
+
+    \PY{k}{return} \PY{n}{U}
 \end{Verbatim}
 \end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-/tmp/ipykernel\_1280239/816352725.py:20: NumbaPerformanceWarning: '@' is faster
-on contiguous arrays, called on (Array(complex128, 2, 'A', False, aligned=True),
-Array(complex128, 2, 'C', False, aligned=True))
-  U = tmp @ U
-    \end{Verbatim}
 
     \subsubsection{Section f: Summary}\label{section-f-summary}
 
@@ -1469,7 +1448,7 @@ the non-abelian Berry phase \(U_{T}\).
     \subsection{Part g) Parameter search}\label{part-g-parameter-search}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{11}{\boxspacing}
+\prompt{In}{incolor}{ }{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{} Fidelity}
 \PY{n+nd}{@njit}
@@ -1491,8 +1470,6 @@ the non-abelian Berry phase \(U_{T}\).
     \PY{n}{Fidelity\PYZus{}target} \PY{o}{=} \PY{n}{fidelity}\PY{p}{(}\PY{n}{ψ}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{Target\PYZus{}state}\PY{p}{)} 
     
     
-    \PY{n}{U} \PY{o}{=} \PY{n}{berry\PYZus{}phase\PYZus{}kato}\PY{p}{(}\PY{n}{times}\PY{p}{,} \PY{n}{evecs}\PY{p}{)}
-
     \PY{n}{E1} \PY{o}{=} \PY{n}{evals}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}
     \PY{n}{U\PYZus{}B} \PY{o}{=} \PY{n}{berry\PYZus{}phase\PYZus{}kato}\PY{p}{(}\PY{n}{times}\PY{p}{,} \PY{n}{evecs}\PY{p}{)}
     \PY{n}{U} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{n}{j} \PY{o}{*} \PY{n}{T\PYZus{}total} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{trapz}\PY{p}{(}\PY{n}{E1}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{U\PYZus{}B}
@@ -1508,7 +1485,7 @@ the non-abelian Berry phase \(U_{T}\).
 \PY{n}{Δ\PYZus{}max} \PY{o}{=} \PY{l+m+mi}{10}
 \PY{n}{Width} \PY{o}{=} \PY{n}{T\PYZus{}total}\PY{o}{/}\PY{l+m+mi}{3}
 \PY{n}{T\PYZus{}vals} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}
-\PY{n}{dmin\PYZus{}factor} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}
+\PY{n}{dmin\PYZus{}factor} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}
 
 
 \PY{n}{Fidelity\PYZus{}targets} \PY{o}{=} \PY{p}{[}\PY{p}{]}
@@ -1528,11 +1505,11 @@ the non-abelian Berry phase \(U_{T}\).
 
     \begin{Verbatim}[commandchars=\\\{\}]
 Calculating Fidelity and Berry Phase Error for different T\_total:
-100\%|██████████| 20/20 [02:35<00:00,  7.79s/it]
+100\%|██████████| 20/20 [01:30<00:00,  4.55s/it]
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{12}{\boxspacing}
+\prompt{In}{incolor}{21}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{Fidelity\PYZus{}targets} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{Fidelity\PYZus{}targets}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{T\PYZus{}vals}\PY{p}{)}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{dmin\PYZus{}factor}\PY{p}{)}\PY{p}{)}
 \PY{n}{Fidelity\PYZus{}Berry\PYZus{}targets} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{Fidelity\PYZus{}Berry\PYZus{}targets}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{T\PYZus{}vals}\PY{p}{)}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{dmin\PYZus{}factor}\PY{p}{)}\PY{p}{)}
@@ -1551,8 +1528,9 @@ Calculating Fidelity and Berry Phase Error for different T\_total:
 \PY{n}{plt}\PY{o}{.}\PY{n}{colorbar}\PY{p}{(}\PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Berry Phase Fidelity}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}Δ\PYZus{}}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{text}\PY{l+s+si}{\PYZob{}min\PYZcb{}}\PY{l+s+s1}{\PYZcb{}/Δ\PYZus{}}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{text}\PY{l+s+si}{\PYZob{}max\PYZcb{}}\PY{l+s+s1}{\PYZcb{}\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}T\PYZus{}}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{text}\PY{l+s+si}{\PYZob{}total\PYZcb{}}\PY{l+s+s1}{\PYZcb{}\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Berry Phase Error vs \PYZdl{}Δ\PYZus{}}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{text}\PY{l+s+si}{\PYZob{}min\PYZcb{}}\PY{l+s+s1}{\PYZcb{}\PYZdl{} and \PYZdl{}T\PYZus{}}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{text}\PY{l+s+si}{\PYZob{}total\PYZcb{}}\PY{l+s+s1}{\PYZcb{}\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Berry Phase Fidelity vs \PYZdl{}Δ\PYZus{}}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{text}\PY{l+s+si}{\PYZob{}min\PYZcb{}}\PY{l+s+s1}{\PYZcb{}\PYZdl{} and \PYZdl{}T\PYZus{}}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{text}\PY{l+s+si}{\PYZob{}total\PYZcb{}}\PY{l+s+s1}{\PYZcb{}\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
@@ -1568,7 +1546,7 @@ Calculating Fidelity and Berry Phase Error for different T\_total:
     { \hspace*{\fill} \\}
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{13}{\boxspacing}
+\prompt{In}{incolor}{22}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{}print best fidelity and fidelity}
 \PY{n}{min\PYZus{}fidelity\PYZus{}idx} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{unravel\PYZus{}index}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{Fidelity\PYZus{}targets}\PY{p}{)}\PY{p}{,} \PY{n}{Fidelity\PYZus{}targets}\PY{o}{.}\PY{n}{shape}\PY{p}{)}
@@ -1585,11 +1563,97 @@ Calculating Fidelity and Berry Phase Error for different T\_total:
 \end{tcolorbox}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-Optimal T\_total: 952.632, Optimal Δ\_min/Δ\_max: 0.047
+Optimal T\_total: 100.000, Optimal Δ\_min/Δ\_max: 0.000
 Maximum Fidelity: 1.000
 Optimal T\_total for Maximum fidelity: 100.000, Optimal Δ\_min/Δ\_max for Maximum
-fidelity: 0.042
-Maximum Berry Phase fidelity: 0.998
+fidelity: 0.000
+Maximum Berry Phase fidelity: 1.000
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{24}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}Find the parameters where both fidelities are above 0.99}
+\PY{n}{above\PYZus{}99} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{p}{(}\PY{n}{Fidelity\PYZus{}targets} \PY{o}{\PYZgt{}} \PY{l+m+mf}{0.999}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{Fidelity\PYZus{}Berry\PYZus{}targets} \PY{o}{\PYZgt{}} \PY{l+m+mf}{0.999}\PY{p}{)}\PY{p}{)}
+\PY{n}{optimal\PYZus{}Ts} \PY{o}{=} \PY{n}{T\PYZus{}vals}\PY{p}{[}\PY{n}{above\PYZus{}99}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}
+\PY{n}{optimal\PYZus{}dmins} \PY{o}{=} \PY{n}{dmin\PYZus{}factor}\PY{p}{[}\PY{n}{above\PYZus{}99}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Parameters where both fidelities are above 0.999:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+
+\PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{optimal\PYZus{}Ts}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+    \PY{n}{T} \PY{o}{=} \PY{n}{optimal\PYZus{}Ts}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+    \PY{n}{dmin} \PY{o}{=} \PY{n}{optimal\PYZus{}dmins}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+    \PY{n}{fid} \PY{o}{=} \PY{n}{Fidelity\PYZus{}targets}\PY{p}{[}\PY{n}{above\PYZus{}99}\PY{p}{]}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+    \PY{n}{berry\PYZus{}fid} \PY{o}{=} \PY{n}{Fidelity\PYZus{}Berry\PYZus{}targets}\PY{p}{[}\PY{n}{above\PYZus{}99}\PY{p}{]}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{T\PYZus{}total: }\PY{l+s+si}{\PYZob{}}\PY{n}{T}\PY{l+s+si}{:}\PY{l+s+s2}{.3f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{, Δ\PYZus{}min/Δ\PYZus{}max: }\PY{l+s+si}{\PYZob{}}\PY{n}{dmin}\PY{l+s+si}{:}\PY{l+s+s2}{.3f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{, Fidelity: }\PY{l+s+si}{\PYZob{}}\PY{n}{fid}\PY{l+s+si}{:}\PY{l+s+s2}{.4f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{, Berry Phase Fidelity: }\PY{l+s+si}{\PYZob{}}\PY{n}{berry\PYZus{}fid}\PY{l+s+si}{:}\PY{l+s+s2}{.4f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Parameters where both fidelities are above 0.999:
+T\_total: 100.000, Δ\_min/Δ\_max: 0.000, Fidelity: 1.0000, Berry Phase Fidelity:
+1.0000
+T\_total: 147.368, Δ\_min/Δ\_max: 0.026, Fidelity: 0.9992, Berry Phase Fidelity:
+0.9991
+T\_total: 147.368, Δ\_min/Δ\_max: 0.053, Fidelity: 1.0000, Berry Phase Fidelity:
+0.9999
+T\_total: 194.737, Δ\_min/Δ\_max: 0.026, Fidelity: 0.9993, Berry Phase Fidelity:
+0.9994
+T\_total: 194.737, Δ\_min/Δ\_max: 0.105, Fidelity: 0.9994, Berry Phase Fidelity:
+0.9994
+T\_total: 194.737, Δ\_min/Δ\_max: 0.368, Fidelity: 0.9994, Berry Phase Fidelity:
+0.9994
+T\_total: 336.842, Δ\_min/Δ\_max: 0.026, Fidelity: 1.0000, Berry Phase Fidelity:
+1.0000
+T\_total: 384.211, Δ\_min/Δ\_max: 0.026, Fidelity: 0.9997, Berry Phase Fidelity:
+0.9997
+T\_total: 384.211, Δ\_min/Δ\_max: 0.053, Fidelity: 0.9998, Berry Phase Fidelity:
+0.9998
+T\_total: 431.579, Δ\_min/Δ\_max: 0.026, Fidelity: 0.9991, Berry Phase Fidelity:
+0.9991
+T\_total: 431.579, Δ\_min/Δ\_max: 0.105, Fidelity: 1.0000, Berry Phase Fidelity:
+1.0000
+T\_total: 431.579, Δ\_min/Δ\_max: 0.132, Fidelity: 0.9995, Berry Phase Fidelity:
+0.9995
+T\_total: 431.579, Δ\_min/Δ\_max: 0.158, Fidelity: 0.9998, Berry Phase Fidelity:
+0.9998
+T\_total: 431.579, Δ\_min/Δ\_max: 0.447, Fidelity: 0.9997, Berry Phase Fidelity:
+0.9997
+T\_total: 478.947, Δ\_min/Δ\_max: 0.026, Fidelity: 0.9998, Berry Phase Fidelity:
+0.9998
+T\_total: 526.316, Δ\_min/Δ\_max: 0.026, Fidelity: 0.9996, Berry Phase Fidelity:
+0.9996
+T\_total: 526.316, Δ\_min/Δ\_max: 0.158, Fidelity: 0.9999, Berry Phase Fidelity:
+0.9999
+T\_total: 573.684, Δ\_min/Δ\_max: 0.026, Fidelity: 0.9994, Berry Phase Fidelity:
+0.9994
+T\_total: 621.053, Δ\_min/Δ\_max: 0.026, Fidelity: 0.9997, Berry Phase Fidelity:
+0.9997
+T\_total: 715.789, Δ\_min/Δ\_max: 0.026, Fidelity: 0.9995, Berry Phase Fidelity:
+0.9995
+T\_total: 715.789, Δ\_min/Δ\_max: 0.132, Fidelity: 1.0000, Berry Phase Fidelity:
+1.0000
+T\_total: 763.158, Δ\_min/Δ\_max: 0.053, Fidelity: 0.9995, Berry Phase Fidelity:
+0.9995
+T\_total: 810.526, Δ\_min/Δ\_max: 0.105, Fidelity: 0.9991, Berry Phase Fidelity:
+0.9991
+T\_total: 857.895, Δ\_min/Δ\_max: 0.105, Fidelity: 1.0000, Berry Phase Fidelity:
+1.0000
+T\_total: 857.895, Δ\_min/Δ\_max: 0.211, Fidelity: 0.9990, Berry Phase Fidelity:
+0.9990
+T\_total: 905.263, Δ\_min/Δ\_max: 0.026, Fidelity: 0.9999, Berry Phase Fidelity:
+0.9999
+T\_total: 905.263, Δ\_min/Δ\_max: 0.132, Fidelity: 0.9993, Berry Phase Fidelity:
+0.9993
+T\_total: 952.632, Δ\_min/Δ\_max: 0.026, Fidelity: 0.9997, Berry Phase Fidelity:
+0.9997
+T\_total: 952.632, Δ\_min/Δ\_max: 0.079, Fidelity: 0.9996, Berry Phase Fidelity:
+0.9996
+T\_total: 1000.000, Δ\_min/Δ\_max: 0.079, Fidelity: 0.9999, Berry Phase Fidelity:
+0.9999
+T\_total: 1000.000, Δ\_min/Δ\_max: 0.132, Fidelity: 0.9991, Berry Phase Fidelity:
+0.9991
+T\_total: 1000.000, Δ\_min/Δ\_max: 0.237, Fidelity: 0.9995, Berry Phase Fidelity:
+0.9995
     \end{Verbatim}
 
     \subsubsection{Section g: Summary}\label{section-g-summary}
@@ -1629,7 +1693,7 @@ some fault in the implementation of the Berry phase.
 parameters}\label{h-evolve-the-wavefunction-with-optimal-parameters}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{14}{\boxspacing}
+\prompt{In}{incolor}{25}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{}\PYZsh{} use the best parameters to replicate the results}
 \PY{n}{T\PYZus{}total} \PY{o}{=} \PY{n}{optimal\PYZus{}T}
@@ -1649,12 +1713,12 @@ parameters}\label{h-evolve-the-wavefunction-with-optimal-parameters}
 \end{tcolorbox}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Braiding_project_files/Braiding_project_40_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Braiding_project_files/Braiding_project_41_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{15}{\boxspacing}
+\prompt{In}{incolor}{26}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{basis\PYZus{}parities} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
 
@@ -1705,31 +1769,31 @@ parameters}\label{h-evolve-the-wavefunction-with-optimal-parameters}
 \end{tcolorbox}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-/tmp/ipykernel\_1280239/1466126454.py:9: ComplexWarning: Casting complex values
-to real discards the imaginary part
+/tmp/ipykernel\_94568/1466126454.py:9: ComplexWarning: Casting complex values to
+real discards the imaginary part
   Parities[i, 0] = (np.vdot(ψ[i], op1@ψ[i]))
-/tmp/ipykernel\_1280239/1466126454.py:10: ComplexWarning: Casting complex values
-to real discards the imaginary part
+/tmp/ipykernel\_94568/1466126454.py:10: ComplexWarning: Casting complex values to
+real discards the imaginary part
   Parities[i, 1] = (np.vdot(ψ[i], op2@ψ[i]))
-/tmp/ipykernel\_1280239/1466126454.py:11: ComplexWarning: Casting complex values
-to real discards the imaginary part
+/tmp/ipykernel\_94568/1466126454.py:11: ComplexWarning: Casting complex values to
+real discards the imaginary part
   Parities[i, 2] = (np.vdot(ψ[i], op3@ψ[i]))
     \end{Verbatim}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Braiding_project_files/Braiding_project_41_1.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Braiding_project_files/Braiding_project_42_1.png}
     \end{center}
     { \hspace*{\fill} \\}
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{16}{\boxspacing}
+\prompt{In}{incolor}{ }{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fidelity to target state:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fidelity}\PY{p}{(}\PY{n}{ψ}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{Target\PYZus{}state}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-Fidelity to target state: 0.9955904765597071
+Fidelity to target state: 0.999999994784438
     \end{Verbatim}
 
     \subsection{Results}\label{results}
@@ -1760,9 +1824,8 @@ Fidelity to target state: 0.9955904765597071
   time there is for the wavefunction to oscillate.
 \item
   We believe we managed to calculate the Berry phase using the Kato
-  method, although we later saw no pattern in the results. This can
-  strongly indicate that there is some error in the implementation of
-  the Berry phase.
+  method, as the results matched the fidelity of the target state vs the
+  obtained state.
 \item
   We did a grid search for the optimal parameters of the braiding
   protocol, and found a higher fidelity for larger total times \(T\),
@@ -1778,7 +1841,7 @@ Fidelity to target state: 0.9955904765597071
   to be 20/width = 60/T.
 \item
   Lastly, we replicated the braiding protocol with the optimal
-  parameters for the Berry phase fidelity, and got a fidelity of 0.995
+  parameters for the Berry phase fidelity, and got a fidelity of 1.000
   when measuring the target state vs the obtained state. This means that
   the braiding protocol was adiabatic and the final state was very close
   to the expected state.
@@ -1786,23 +1849,13 @@ Fidelity to target state: 0.9955904765597071
 
 \subsection{Discussion}\label{discussion}
 
-We suspect redefining \(γ_2\), might be the cause of the rapid
-oscillations in the wavefunction as well as the Berry phase not behaving
-as expected. Although during testing, we noticed that the rapid
-oscillations in the wavefunction were not present when the total time
-\(T\) was smaller, which could indicate that nothing was wrong at that
-point. This would indicate that the apparent mistake in the definition
-of \(γ_2\) is not the cause of some of the unexpected behaviour of the
-Berry phase, but rather that the Kato method was not implemented
-correctly.
-
 We are very confident in the time-evolution of the system itself, as we
 tested both regular Euler method, and the exponential method. Both gave
 the same results.
 
-The rapid oscillations in the wavefunction coefficients matched with the
-oscillations in the parity, indicating that the parity expectation value
-was implemented correctly.
+The parity measurements behaves as expected when turning on and off the
+different couplings, indicating that the parity expectation value was
+implemented correctly.
 
 Lasltly, using the optimal parameters we found, we were able to
 replicate the braiding protocol with a high fidelity, while also making
@@ -1822,28 +1875,23 @@ on their results.
 We are very confident in our implementation of the time-evolution of the
 system and the braiding protocol. We successfully expressed the Pauli
 operators in terms of Majorana operators, and found the correct braiding
-operators \(B_{ij}\). We did not optimally implement the Jordan-Wigner
-transformation. This can have cost us some subsequent errors in the
-later implementations, such as the Berry phase and the rapid
-oscillations in the wavefunction coefficients and parity. Overall, we
-believe that we managed to implement the braiding protocol successfully,
-and that we simulated a successful braiding protocol with a high
-fidelity. We also managed to find the optimal parameters for the
-braiding protocol, which allowed us to replicate the braiding protocol
-with a high fidelity and an adiabatic evolution.
+operators \(B_{ij}\). We succsesfully implement the Jordan-Wigner
+transformation. Overall, we believe that we managed to implement the
+braiding protocol successfully, and that we simulated a successful
+braiding protocol with a high fidelity. We also managed to find the
+optimal parameters for the braiding protocol, which allowed us to
+replicate the braiding protocol with a high fidelity and an adiabatic
+evolution.
 
 \subsection{Further work}\label{further-work}
 
-First of all, we would like to implement the Jordan-Wigner
-transformation correctly. This would eliminate the biggest source of
-uncertainty in the correctness of our implementation. This might reveal
-why the berry phase fidelity plot was so chaotic, and it might also help
-us understand the rapid oscillations.
-
-If we manage to implement the Jordan-Wigner transformation correctly, we
-would then like to proceed with implementing a couple more braiding
+We would then like to proceed with implementing a couple more braiding
 protocols, in order to replicate some other Pauli gates in terms of
-braiding.
+braiding. This would allow us to see how well the braiding protocol
+works in general. This seems like the natural next step, as we have
+already implemented the braiding protocol for half a Z gate, and we
+could try to implement the braiding protocol for a full Z gate, and
+other gates as well.
 
 \subsection{References}\label{references}
 
